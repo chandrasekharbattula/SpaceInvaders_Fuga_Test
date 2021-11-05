@@ -12,7 +12,7 @@ be found.
 The program uses spring boot framework and spring shell starter to create a shell command based execution.
 ### Dependency Management 
 The application uses Gradle tool to manage dependencies.
-###Execution Steps
+### Execution Steps
 Below steps should be performed to run the program.
 
 1. Build the application using the below gradle command.

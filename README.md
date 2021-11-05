@@ -10,7 +10,7 @@ be found.
 ## Implementation
 ### Framework
 The program uses spring boot framework and spring shell starter to create a shell command based execution.
-###Dependency Management 
+### Dependency Management 
 The application uses Gradle tool to manage dependencies.
 ###Execution Steps
 Below steps should be performed to run the program.

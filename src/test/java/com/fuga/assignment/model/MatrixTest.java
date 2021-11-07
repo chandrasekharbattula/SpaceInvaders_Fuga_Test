@@ -30,17 +30,17 @@ class MatrixTest {
   }
 
   @Test
-  public void testIsValidPointOutOfBoundary() {
+  public void testOutOfBoundaryPixel() {
     assertFalse(testMatrix.isFilledSpace(5, 0));
   }
 
   @Test
-  public void testIsValidPointFalse() {
+  public void testFalseValidPixel() {
     assertFalse(testMatrix.isFilledSpace(0, 0));
   }
 
   @Test
-  public void testIsValidPointTrue() {
+  public void testTrueValidPixel() {
     assertTrue(testMatrix.isFilledSpace(1, 2));
   }
 }

@@ -23,7 +23,6 @@ public class SpaceInvadersAppCommands {
 
   private final InputReader inputReader;
 
-
   public SpaceInvadersAppCommands(SpaceInvaderPatternReader spaceInvaderPatternReader, SpaceInvaderFinder spaceInvaderFinder, InputReader inputReader) {
     this.spaceInvaderPatternReader = spaceInvaderPatternReader;
     this.spaceInvaderFinder = spaceInvaderFinder;
@@ -51,15 +50,22 @@ public class SpaceInvadersAppCommands {
 
     List<int[][]> spaceInvaders = spaceInvaderPatternReader.getSpaceInvaderPatterns(spaceInvaderPatterns);
 
-    List<SubMatrix> spaceInvadersFound = spaceInvaderFinder.find(
-        new Matrix(inputReader
-            .fileToArray(new File(radarImage))),
-        spaceInvaders);
-
-    System.out.printf("Total no of space invaders found are %s%n", spaceInvadersFound.size());
-    for (SubMatrix spaceInvader : spaceInvadersFound) {
-      Pixel startingPixel = spaceInvader.getStartingPixel();
-      System.out.printf("A space invader found at pixels (%s,%s) %n", startingPixel.getX(), startingPixel.getY());
+    if (spaceInvaders.isEmpty()) {
+      System.out.println("No valid space invader patterns provided");
+    } else {
+      List<SubMatrix> spaceInvadersFound = spaceInvaderFinder.find(
+          new Matrix(inputReader
+              .fileToArray(new File(radarImage))),
+          spaceInvaders);
+      if (spaceInvadersFound.isEmpty()) {
+        System.out.println("No space invaders found");
+      } else {
+        System.out.printf("Total no of space invaders found are %s%n", spaceInvadersFound.size());
+        for (SubMatrix spaceInvader : spaceInvadersFound) {
+          Pixel startingPixel = spaceInvader.getStartingPixel();
+          System.out.printf("A space invader found at pixels (%s,%s) %n", startingPixel.getX(), startingPixel.getY());
+        }
+      }
     }
 
     System.out.println("----------Program Ended------------");

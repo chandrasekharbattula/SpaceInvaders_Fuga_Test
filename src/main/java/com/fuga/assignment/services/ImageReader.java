@@ -4,7 +4,6 @@ import com.fuga.assignment.interfaces.InputReader;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -17,8 +16,7 @@ public class ImageReader implements InputReader {
 
   private static final Logger logger = LoggerFactory.getLogger(ImageReader.class);
 
-  @Value("${blackPixel}")
-  private String blackPixelChar;
+  private static final char FILLED_PIXEL = 'o';
 
   /**
    * Reads a file containing an image and save the image as a matrix of ints.
@@ -71,7 +69,7 @@ public class ImageReader implements InputReader {
   private int[] convertToBinaryArray(char[] line) {
     int[] binaryArray = new int[line.length];
     for (int i = 0; i < line.length; i++) {
-      binaryArray[i] = line[i] == blackPixelChar.charAt(0) ? 1 : 0;
+      binaryArray[i] = line[i] == FILLED_PIXEL ? 1 : 0;
     }
     return binaryArray;
   }

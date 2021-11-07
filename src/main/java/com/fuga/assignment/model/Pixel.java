@@ -30,7 +30,13 @@ public class Pixel implements Comparable<Pixel>{
     if (this.y > p.y) {
       return 1;
     }
-    return Integer.compare(this.x, p.x);
+    if (this.x < p.x) {
+      return -1;
+    }
+    if (this.x > p.x) {
+      return 1;
+    }
+    return 0;
   }
 
   // compare pixels according to their x-coordinate
